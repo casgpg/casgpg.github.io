@@ -205,6 +205,13 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="./js/index.js"></script>
+
+<script>
+    $.get('news.csv', function(data) {
+        var myvar = data;
+        console.log(myvar)
+    });
+</script>
 </body>  
 </html>
 
