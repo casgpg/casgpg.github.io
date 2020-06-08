@@ -218,13 +218,13 @@
             var old_date = lines[1].split(',')[0];
             var result = "";
             var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
-            console.log(lines)
+//             console.log(lines)
             for(var i=1;i<lines.length;i++){
                 if(lines[i] == ''){
                     continue
                 }
                 line = lines[i].split(',')
-                console.log(line)
+//                 console.log(line)
                 if(old_date != line[0]){
                     res = res +  "<hr>";
                     result = result + res;
