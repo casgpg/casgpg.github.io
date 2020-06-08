@@ -209,7 +209,7 @@
 <script>
     $.get('news.csv', function(data) {
         lines = data.split("\n");
-        console.log(lines)
+        console.log(lines[0][0].toLowerCase())
         if(lines[0][0].toLowerCase() == 'd')
             lines = lines.shift();
         var no_news = false;
@@ -243,7 +243,6 @@
             }
             $("#ticker01").html(result);
         }
-        dates = []
     });
 </script>
 </body>  
