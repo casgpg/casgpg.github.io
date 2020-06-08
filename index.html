@@ -204,8 +204,6 @@
     <p>Copyright © 2020, S G P G Associates | All Rights Reserved</p>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="./js/index.js"></script>
-
 <script>
     $.get('news.csv', function(data) {
         lines = data.split("\n");
@@ -234,7 +232,10 @@
                     result = result + res;
                     res = "";
                     old_date = line[0]
+                    dates = dates + 1;
                     res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+                    if(dates > 4)
+                        break
                 }
                 heading = line[1];
                 url = line[2];
@@ -245,6 +246,8 @@
         }
     });
 </script>
+<script src="./js/index.js"></script>
+
 </body>  
 </html>
 
