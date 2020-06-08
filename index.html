@@ -172,15 +172,15 @@
                 <p style="float: left; margin-bottom: 0px;"class="heading">What's New</p>
                 <p style="float: right;"> <a href="./pages/viewall.html" target="_blank" style="font-size: 14px;">View All</a> </p>
               </div> 
-                <div class="holder">
-                    <ul id="ticker01">
+                <div class="holder" id="whatsnew">
+                    <!-- <ul id="ticker01">
                         <li style="font-weight: 600; color: #222222;"> 12-01-2020</li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <hr>
-                    </ul>
+                    </ul> -->
 
                 </div>
             </div>
@@ -208,8 +208,35 @@
 
 <script>
     $.get('news.csv', function(data) {
-        var myvar = data;
-        console.log(myvar)
+        lines = data.split("\n");
+        if(lines[0][0].toLowerCase() == 'date')
+            lines = lines.shift();
+        if(lines.length == 0)
+            no_news = true;
+        if(no_news){
+            $("#whatsnew").html("No New Updates");
+        }
+        else{
+            var dates = 0;
+            var old_date = lines[0][0];
+            var result = "";
+            var res = "<ul id='ticker01'> <li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+            for(var i=0;i<lines.length;i++){
+                if(old_date != lines[i][0]){
+                    res = res +  "<hr></ul>";
+                    result = result + res;
+                    res = "";
+                    old_date = lines[i][0]
+                    res = "<ul id='ticker01'> <li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+                }
+                heading = lines[i][1];
+                url = lines[i][2];
+                sub_val = "<li style='font-size: 14px;'><img src='./images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
+                res = res + sub_val;
+            }
+            $("#whatsnew").html(result);
+        }
+        dates = []
     });
 </script>
 </body>  
