@@ -210,7 +210,7 @@
     $.get('news.csv', function(data) {
         lines = data.split("\n");
         console.log(lines)
-        if(lines[0][0].toLowerCase() == 'date')
+        if(lines[0][0].toLowerCase() == 'd')
             lines = lines.shift();
         var no_news = false;
         if(lines.length == 0)
