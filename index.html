@@ -209,6 +209,7 @@
 <script>
     $.get('news.csv', function(data) {
         lines = data.split("\n");
+        console.log(lines)
         if(lines[0][0].toLowerCase() == 'date')
             lines = lines.shift();
         var no_news = false;
@@ -223,6 +224,7 @@
             var result = "";
             var res = "<ul id='ticker01'> <li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
             for(var i=0;i<lines.length;i++){
+                console.log(lines[i])
                 if(old_date != lines[i][0]){
                     res = res +  "<hr></ul>";
                     result = result + res;
