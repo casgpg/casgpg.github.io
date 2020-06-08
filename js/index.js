@@ -33,7 +33,7 @@ jQuery.fn.liScroll = function(settings) {
 		return this.each(function(){
 				var $strip = jQuery(this);
 				$strip.addClass("newsticker")
-				var stripHeight = 1;
+				var stripHeight = -250;
 				$strip.find("li").each(function(i){
 					stripHeight += jQuery(this, i).outerHeight(true); 
 				});

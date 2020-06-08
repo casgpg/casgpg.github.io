@@ -208,7 +208,7 @@
     $.get('news.csv', function(data) {
         lines = data.split("\n");
         console.log(lines[0][0].toLowerCase())
-        if(lines[0][0].toLowerCase() == 'd')
+        if(lines[0].toLowerCase() == 'd')
             lines = lines.shift();
         var no_news = false;
         if(lines.length == 0)
@@ -226,7 +226,6 @@
                     continue
                 }
                 line = lines[i].split(',')
-                console.log(line)
                 if(old_date != line[0]){
                     res = res +  "<hr>";
                     result = result + res;
