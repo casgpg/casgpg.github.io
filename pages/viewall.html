@@ -144,21 +144,18 @@
 <script>
     $.get('../news.csv', function(data) {
         lines = data.split("\n");
-        console.log(lines)
-        if(lines[0][0].toLowerCase() == 'd')
-            lines = lines.shift();
         var no_news = false;
-        if(lines.length == 0)
+        if(lines.length == 1)
             no_news = true;
         if(no_news){
             $("#view-list").html("No New Updates");
         }
         else{
             var dates = 0;
-            var old_date = lines[0].split(',')[0];
+            var old_date = lines[1].split(',')[0];
             var result = "";
             var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
-            for(var i=0;i<lines.length;i++){
+            for(var i=1;i<lines.length;i++){
                 if(lines[i] == ''){
                     continue
                 }
