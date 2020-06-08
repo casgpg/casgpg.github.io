@@ -173,14 +173,14 @@
                 <p style="float: right;"> <a href="./pages/viewall.html" target="_blank" style="font-size: 14px;">View All</a> </p>
               </div> 
                 <div class="holder" id="whatsnew">
-                    <!-- <ul id="ticker01">
-                        <li style="font-weight: 600; color: #222222;"> 12-01-2020</li>
+                    <ul id="ticker01">
+                        <!-- <li style="font-weight: 600; color: #222222;"> 12-01-2020</li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
-                        <hr>
-                    </ul> -->
+                        <hr> -->
+                    </ul> 
 
                 </div>
             </div>
@@ -216,29 +216,32 @@
         if(lines.length == 0)
             no_news = true;
         if(no_news){
-            $("#whatsnew").html("No New Updates");
+            $("#ticker01").html("No New Updates");
         }
         else{
             var dates = 0;
             var old_date = lines[0].split(',')[0];
             var result = "";
-            var res = "<ul id='ticker01'> <li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+            var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
             for(var i=0;i<lines.length;i++){
+                if(lines[i] == ''){
+                    continue
+                }
                 line = lines[i].split(',')
                 console.log(line)
                 if(old_date != line[0]){
-                    res = res +  "<hr></ul>";
+                    res = res +  "<hr>";
                     result = result + res;
                     res = "";
                     old_date = line[0]
-                    res = "<ul id='ticker01'> <li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+                    res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
                 }
                 heading = line[1];
                 url = line[2];
                 sub_val = "<li style='font-size: 14px;'><img src='./images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
                 res = res + sub_val;
             }
-            $("#whatsnew").html(result);
+            $("#ticker01").html(result);
         }
         dates = []
     });
