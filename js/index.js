@@ -26,7 +26,7 @@ function linksF() {
     x.style.display = "none";
   }
 }
-jQuery.fn.liScroll = function(settings) {
+	jQuery.fn.liScroll = function(settings) {
 	settings = jQuery.extend({
 		travelocity: 0.03
 		}, settings);		
