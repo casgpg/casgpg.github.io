@@ -58,6 +58,7 @@ function linksF() {
 				});			
 		});	
 };
-$(function(){
-    $("ul#ticker01").liScroll();
+$(window).load(function(){
+	$("ul#ticker01").liScroll();
 });
+
