@@ -144,37 +144,6 @@
 
 <script src="../js/index.js"></script>
 <script>
-    $.get('../news.csv', function(data) {
-        lines = data.split("\n");
-        if(lines.length == 1){
-            $("#view-list").html("No New Updates");
-        }
-        else{
-            var dates = 0;
-            var old_date = lines[1].split(',')[0];
-            var result = "";
-            var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
-            for(var i=1;i<lines.length;i++){
-                line = lines[i].split(',');
-                if(old_date != line[0]){
-                    res = res +  "<br />";
-                    result = result + res;
-                    res = "";
-                    old_date = line[0]
-                    res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
-                }
-                if(lines[i] == ''){
-                    continue
-                }
-                heading = line[1];
-                url = line[2];
-                sub_val = "<li style='font-size: 14px;'><img src='../images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
-                res = res + sub_val;
-            }
-            console.log(result)
-            $("#view-list").html(result);
-        }
-    });
 </script>
 </body>  
 </html>

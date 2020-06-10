@@ -46,7 +46,7 @@ jQuery.fn.liScroll = function(settings) {
 				function scrollnews(spazio, tempo){
 				$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
 				}
-				scrollnews(totalTravel, defTiming);				
+				// scrollnews(totalTravel, defTiming);				
 				$strip.mouseover(function(){
 					jQuery(this).stop();
 				});
@@ -58,6 +58,53 @@ jQuery.fn.liScroll = function(settings) {
 				});			
 		});	
 };
+
+$(function(){
+    $.get('../news.csv', function(data) {
+        // data = "date,head,url\n21,head,hoog\n22,head,hoo\n24,head,hoog\n21,head,hoog\n22,head,hoo\n24,head,hoog\n21,head,hoog\n22,head,hoo\n24,head,hoog"
+        lines = data.split("\n");
+        // console.log(lines);
+        if(lines.length == 1){
+            $("#ticker01").html("No New Updates");
+            $("#view-list").html("No New Updates");
+        }
+        else{
+            // console.log(lines);
+            var dates = 0;
+            var old_date = lines[1].split(',')[0];
+            var result = '';
+            var result_viewall = '';
+            var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+            var res_viewall = res;
+            for(var i=1;i<lines.length;i++){
+                line = lines[i].split(',');
+                // console.log(line);
+                if(old_date != line[0]){
+                	res_viewall = res_viewall + "<br />";
+                	res = res +  "<hr />";
+                    result = result + res;
+                    result_viewall = result_viewall + res_viewall;
+                    old_date = line[0];
+                    res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+                    res_viewall  = res;
+                    dates = dates + 1;
+                    if(dates > 4){
+                        break;
+                    }
+                }
+                heading = line[1];
+                url = line[2];
+                sub_val = "<li style='font-size: 14px;'><img src='./images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
+                sub_val_viewall = "<li style='font-size: 14px;'><img src='../images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
+                res = res + sub_val;
+                res_viewall = res_viewall + sub_val_viewall;
+            }
+            // console.log(result)
+            $("#ticker01").html(result);
+            $("#view-list").html(result_viewall);
+        }
+    });
+});
 $(function(){
     $("ul#ticker01").liScroll();
 });
