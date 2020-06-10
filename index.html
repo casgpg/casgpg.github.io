@@ -231,11 +231,12 @@
                     res = res +  "<hr>";
                     result = result + res;
                     res = "";
-                    old_date = line[0]
+                    old_date = line[0];
                     dates = dates + 1;
                     res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
-                    if(dates > 4)
+                    if(dates > 4){
                         break;
+                    }
                 }
                 heading = line[1];
                 url = line[2];
