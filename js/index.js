@@ -33,7 +33,7 @@ jQuery.fn.liScroll = function(settings) {
 		return this.each(function(){
 				var $strip = jQuery(this);
 				$strip.addClass("newsticker")
-				var stripHeight = 0;
+				var stripHeight = -1;
 				$strip.find("li").each(function(i){
 					stripHeight += jQuery(this, i).outerHeight(true); 
 				});
@@ -47,14 +47,14 @@ jQuery.fn.liScroll = function(settings) {
 				$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
 				}
 				scrollnews(totalTravel, defTiming);				
-				$strip.hover(function(){
-				jQuery(this).stop();
-				},
-				function(){
-				var offset = jQuery(this).offset();
-				var residualSpace = offset.top + stripHeight;
-				var residualTime = residualSpace/settings.travelocity;
-				scrollnews(residualSpace, residualTime);
+				$strip.mouseover(function(){
+					jQuery(this).stop();
+				});
+				$strip.mouseout(function(){
+				 	var offset = jQuery(this).offset();
+					var residualSpace = offset.top + stripHeight;
+					var residualTime = residualSpace/settings.travelocity;
+					scrollnews(residualSpace, residualTime);
 				});			
 		});	
 };
