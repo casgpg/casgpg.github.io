@@ -28,7 +28,7 @@ function linksF() {
 }
 jQuery.fn.liScroll = function(settings) {
 	settings = jQuery.extend({
-		travelocity: 0.03
+		travelocity: 0.3
 		}, settings);		
 		return this.each(function(){
 				var $strip = jQuery(this);
@@ -44,7 +44,8 @@ jQuery.fn.liScroll = function(settings) {
 				var totalTravel = stripHeight;
 				var defTiming = totalTravel/settings.travelocity;			
 				function scrollnews(spazio, tempo){
-				$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
+					$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); 
+						scrollnews(totalTravel, defTiming);});
 				}
 				// scrollnews(totalTravel, defTiming);				
 				$strip.mouseover(function(){
@@ -52,9 +53,9 @@ jQuery.fn.liScroll = function(settings) {
 				});
 				$strip.mouseout(function(){
 				 	var offset = jQuery(this).offset();
-					var residualSpace = offset.top + stripHeight;
+					var residualSpace = stripHeight;
 					var residualTime = residualSpace/settings.travelocity;
-					scrollnews(residualSpace, residualTime);
+					// scrollnews(residualSpace, residualTime);
 				});			
 		});	
 };
