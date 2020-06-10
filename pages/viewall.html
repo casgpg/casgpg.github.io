@@ -146,10 +146,7 @@
 <script>
     $.get('../news.csv', function(data) {
         lines = data.split("\n");
-        var no_news = false;
-        if(lines.length == 1)
-            no_news = true;
-        if(no_news){
+        if(lines.length == 1){
             $("#view-list").html("No New Updates");
         }
         else{

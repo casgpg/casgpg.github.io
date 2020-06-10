@@ -173,8 +173,8 @@
                 <p style="float: right;"> <a href="./pages/viewall.html" target="_blank" style="font-size: 14px;">View All</a> </p>
               </div> 
                 <div class="holder" id="whatsnew">
-                    <ul id="ticker01">
-                        <!-- <li style="font-weight: 600; color: #222222;"> 12-01-2020</li>
+                    <!-- <ul id="ticker01">
+                        <li style="font-weight: 600; color: #222222;"> 12-01-2020</li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
                         <li style="font-size: 14px;"><img src="./images/right-arrow.svg" alt=""><a href="" target="_blank">news1</a></li>
@@ -245,43 +245,6 @@
             }
             $("#ticker01").html(result);
         }
-    });
-</script>
-<script type="text/javascript">
-    jQuery.fn.liScroll = function(settings) {
-        settings = jQuery.extend({
-                travelocity: 0.03
-        }, settings);       
-        return this.each(function(){
-            var $strip = jQuery(this);
-            $strip.addClass("newsticker")
-            var stripHeight = -1;
-            $strip.find("li").each(function(i){
-                stripHeight += jQuery(this, i).outerHeight(true); 
-            });
-            var $mask = $strip.wrap("<div class='mask'></div>");
-            var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");                             
-            var containerHeight = $strip.parent().parent().height();        
-            $strip.height(stripHeight);         
-            var totalTravel = stripHeight;
-            var defTiming = totalTravel/settings.travelocity;           
-            function scrollnews(spazio, tempo){
-                $strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
-            }
-            scrollnews(totalTravel, defTiming);             
-            $strip.hover(function(){
-                    jQuery(this).stop();
-                },
-                function(){
-                    var offset = jQuery(this).offset();
-                    var residualSpace = offset.top + stripHeight;
-                    var residualTime = residualSpace/settings.travelocity;
-                    scrollnews(residualSpace, residualTime);
-            });         
-        }); 
-    };
-    $(document).ready(function() {
-        $("ul#ticker01").liScroll();
     });
 </script>
 </html>
