@@ -146,17 +146,19 @@
 <script>
     $.get('../news.csv', function(data) {
         lines = data.split("\n");
+        console.log(lines);
         if(lines.length == 1){
             $("#view-list").html("No New Updates");
         }
         else{
+            console.log(lines);
             var dates = 0;
             var old_date = lines[1].split(',')[0];
             var result = "";
             var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
             for(var i=1;i<lines.length;i++){
-                line = lines[i].split(',')
-                console.log(line)
+                line = lines[i].split(',');
+                console.log(line);
                 if(old_date != line[0]){
                     res = res +  "<br />";
                     result = result + res;
@@ -172,6 +174,7 @@
                 sub_val = "<li style='font-size: 14px;'><img src='../images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
                 res = res + sub_val;
             }
+            console.log(result)
             $("#view-list").html(result);
         }
     });

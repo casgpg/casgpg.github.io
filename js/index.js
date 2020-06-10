@@ -30,7 +30,7 @@ jQuery.fn.liScroll = function(settings) {
 	settings = jQuery.extend({
 		travelocity: 0.03
 		}, settings);		
-		return this.each(function(){
+		return $(this).each(function(){
 				var $strip = jQuery(this);
 				$strip.addClass("newsticker")
 				var stripHeight = -250;
