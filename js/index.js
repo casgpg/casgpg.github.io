@@ -33,7 +33,7 @@ jQuery.fn.liScroll = function(settings) {
 		return this.each(function(){
 				var $strip = jQuery(this);
 				$strip.addClass("newsticker")
-				var stripHeight = -1;
+				var stripHeight = 0;
 				$strip.find("li").each(function(i){
 					stripHeight += jQuery(this, i).outerHeight(true); 
 				});
@@ -91,12 +91,12 @@ else{
             res_viewall  = res;
             dates = dates + 1;
             if(dates > 4){
-                break;
+                
             }
         }
         heading = line[1];
         url = line[2];
-        sub_val = "<li style='font-size: 14px;'><img src='./images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
+        sub_val = "<li style='font-size: 14px;'><span style='word-break: break-word'><img src='./images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></span></li>";
         sub_val_viewall = "<li style='font-size: 14px;'><img src='../images/right-arrow.svg' alt=''><a href='" + url + "' target='_blank'>" + heading + "</a></li>";
         res = res + sub_val;
         res_viewall = res_viewall + sub_val_viewall;
