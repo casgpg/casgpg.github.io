@@ -78,14 +78,14 @@ else{
     var res_viewall = res;
     for(var i=0;i<news.length;i++){
         line = news[i];
-        console.log(line);
+        // console.log(line);
         if(old_date != line[0] || (i == news.length-1)){
         	res_viewall = res_viewall + "<br />";
         	res = res +  "<hr />";
             result = result + res;
             result_viewall = result_viewall + res_viewall;
-            console.log(result);
-            console.log(result_viewall);
+            // console.log(result);
+            // console.log(result_viewall);
             old_date = line[0];
             res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
             res_viewall  = res;
