@@ -155,9 +155,6 @@
             var result = "";
             var res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
             for(var i=1;i<lines.length;i++){
-                if(lines[i] == ''){
-                    continue
-                }
                 line = lines[i].split(',')
                 console.log(line)
                 if(old_date != line[0]){
@@ -166,6 +163,9 @@
                     res = "";
                     old_date = line[0]
                     res = "<li style='font-weight: 600; color: #222222;'>" +  old_date + "</li>";
+                }
+                if(lines[i] == ''){
+                    continue
                 }
                 heading = line[1];
                 url = line[2];
