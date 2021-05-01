@@ -10,8 +10,8 @@ var news = [
 		['2.02.2020', 'Heading', 'https://google.com'],
 		['2.02.2020', 'Heading', 'https://google.com'],
 		['2.02.2020', 'Heading', 'https://google.com']
-                ['2.02.2020', 'Heading', 'https://google.com'] 
-]
+]               
+
 
 // Example
 // ['date','news title', 'new url, optional, If no url, add #']
